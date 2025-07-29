@@ -30,7 +30,9 @@ my %WriteMakefileArgs = (
     LICENSE          => 'perl_5',
     MIN_PERL_VERSION => '5.010',
     CONFIGURE_REQUIRES => {
-        'ExtUtils::MakeMaker' => '0',
+        'autodie'               => '0',
+        'ExtUtils::MakeMaker'   => '0',
+        'File::Spec::Functions' => '0',
     },
     PREREQ_PM => {
         'strict'   => 0,
