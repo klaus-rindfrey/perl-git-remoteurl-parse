@@ -62,14 +62,21 @@ jobs:
           make
           prove -lr t
 
-      - name: Author tests
+      - name: Author and distribution tests
         if: matrix.runner == 'ubuntu-latest' && matrix.perl == '5.40'
         env:
           TEST_AUTHOR: 1
           RELEASE_TESTING: 1
+
         run: |
           perl Makefile.PL
-          make
           make manifest
-          cpanm --notest --installdeps .
+          make dist
+
+          cpanm --notest --installdeps --with-develop --with-test --verbose .
+
+          tar xzf *.tar.gz
+          DISTDIR=$(echo *.tar.gz | sed 's/\.tar\.gz//')
+
+          cd "$DISTDIR"
           prove -lr t xt

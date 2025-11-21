@@ -55,9 +55,10 @@ my %authortest_requires = (
                            'Pod::Wordlist'       => '1.27',
                            'Test::Pod::Coverage' => '1.10',
                            'Test::Spelling'      => '0.25',
+                           'Test::Kwalitee'      => '1.26',
                           );
 
-if ($ENV{TEST_AUTHOR}) {
+if ($ENV{TEST_AUTHOR} || $ENV{RELEASE_TESTING}) {
   print "Author tests enabled (TEST_AUTHOR=1)\n";
   %test_requires = (%test_requires,  %authortest_requires);
 }
