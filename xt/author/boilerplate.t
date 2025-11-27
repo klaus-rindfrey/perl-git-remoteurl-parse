@@ -4,6 +4,11 @@ use strict;
 use warnings;
 use Test::More;
 
+
+unless ( $ENV{AUTHOR_TESTING} ) {
+    plan( skip_all => "Author tests not required for installation" );
+}
+
 plan tests => 3;
 
 sub not_in_file_ok {
