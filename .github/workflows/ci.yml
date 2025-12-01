@@ -63,5 +63,5 @@ jobs:
           prove -lr t
 
       - name: Author and release tests (COMPOSITE)
-        if: matrix.os == 'ubuntu-latest' && matrix.perl == '5.40'
+        if: matrix.runner == 'ubuntu-latest' && matrix.perl == '5.40'
         uses: klaus-rindfrey/perltest-release-and-author-tests@main
