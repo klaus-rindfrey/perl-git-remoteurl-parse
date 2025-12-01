@@ -62,27 +62,5 @@ jobs:
           make
           prove -lr t
 
-      - name: Author and distribution tests
-        if: matrix.runner == 'ubuntu-latest' && matrix.perl == '5.40'
-        run: |
-          echo "TEST_AUTHOR=1" >> $GITHUB_ENV
-          echo "RELEASE_TESTING=1" >> $GITHUB_ENV
-
-      - name: Build distribution
-        run: |
-          perl Makefile.PL
-          make manifest
-          make dist
-
-      - name: Install dependencies
-        run: cpanm --notest --installdeps --with-develop --with-test --verbose .
-
-      - name: Unpack distribution
-        run: |
-          tar xzf *.tar.gz
-          DISTDIR=$(echo *.tar.gz | sed 's/\.tar\.gz//')
-
-      - name: Run tests in dist dir
-        run: |
-          cd "$DISTDIR"
-          prove -lr t xt
+      - name: Author and release tests
+        uses: klaus-rindfrey/perltest-release-and-author-tests@main
