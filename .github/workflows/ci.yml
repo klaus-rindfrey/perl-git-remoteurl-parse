@@ -3,6 +3,7 @@
 name: Run Module Tests
 
 on:
+  push:
     branches:
       - '**'
   pull_request:
