@@ -50,8 +50,8 @@ my %prereq_build = (
                    );
 
 
-if ($ENV{TEST_AUTHOR}) {
-  print "Author tests enabled (TEST_AUTHOR is TRUE)\n";
+if ($ENV{AUTHOR_TESTING}) {
+  print "Author tests enabled (AUTHOR_TESTING is TRUE)\n";
   add_mods(\%test_requires, {
                              'Pod::Coverage'       => '0.23',
                              'Pod::Wordlist'       => '1.27',

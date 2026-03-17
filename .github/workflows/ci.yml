@@ -3,14 +3,22 @@
 name: Run Module Tests
 
 on:
-  push:
     branches:
-      - main
-      - gh_actions
+      - '**'
   pull_request:
     branches:
       - main
+      - devel
   workflow_dispatch:
+    inputs:
+      release_test_addn:
+        description: "Controls whether additional release tests should be run."
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "true"
+          - "false"
 
 # https://github.com/shogo82148/actions-setup-perl
 
@@ -65,3 +73,5 @@ jobs:
       - name: Author and release tests (COMPOSITE)
         if: matrix.runner == 'ubuntu-latest' && matrix.perl == '5.40'
         uses: klaus-rindfrey/perltest-release-and-author-tests@main
+        with:
+          release_test_addn: ${{ inputs.release_test_addn }}
