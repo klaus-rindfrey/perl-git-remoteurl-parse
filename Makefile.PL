@@ -55,6 +55,7 @@ if ($ENV{AUTHOR_TESTING}) {
   add_mods(\%test_requires, {
                              'Pod::Coverage'       => '0.23',
                              'Pod::Wordlist'       => '1.27',
+                             'Test::Pod'           => '1.22',
                              'Test::Pod::Coverage' => '1.10',
                              'Test::Spelling'      => '0.25',
                              'Test::Kwalitee'      => '1.26',
